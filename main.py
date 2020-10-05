@@ -42,11 +42,12 @@ while True:
           cX = int(M["m10"] / M["m00"])
           cY = int(M["m01"] / M["m00"])
 
-          # block any reflections in the lower third
+          # block any reflections in the lower third of webcam view
           if cY < 2*h/3:
             cv2.drawContours(mask,[cnt],0,255,-1)
 
     # resize the video frame to match the camera
+    # Move gull's eye into window frame
     frame = cv2.resize(frame[250:600, 350:1050], (w, h), interpolation = cv2.INTER_AREA)
     #frame = cv2.resize(frame, (w, h), interpolation = cv2.INTER_AREA)
 
