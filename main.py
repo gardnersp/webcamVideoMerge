@@ -6,10 +6,10 @@ camera = cv2.VideoCapture(1)
 camera.set(3,1920)
 camera.set(4,1080)
 
-#url = "https://www.youtube.com/watch?v=HqErSOEjHe4" # Fish
-#url = "https://www.youtube.com/watch?v=icDwkh0kF0k" # Waves
-url = "https://www.youtube.com/watch?v=yVEKfLGwH0Q" # Gull
-url = "https://www.youtube.com/watch?v=n9AG43bwkos"
+#url = "https://www.youtube.com/watch?v=HqErSOEjHe4" # Fish with copyright
+#url = "https://www.youtube.com/watch?v=icDwkh0kF0k" # Waves with copyright
+url = "https://www.youtube.com/watch?v=yVEKfLGwH0Q" # Gull no copyright
+#url = "https://www.youtube.com/watch?v=n9AG43bwkos" # Trafic no copyright
 
 source = pafy.new(url)
 best = source.getbest(preftype="mp4")
@@ -47,8 +47,8 @@ while True:
             cv2.drawContours(mask,[cnt],0,255,-1)
 
     # resize the video frame to match the camera
-    #frame = cv2.resize(frame[250:600, 350:1050], (w, h), interpolation = cv2.INTER_AREA)
-    frame = cv2.resize(frame, (w, h), interpolation = cv2.INTER_AREA)
+    frame = cv2.resize(frame[250:600, 350:1050], (w, h), interpolation = cv2.INTER_AREA)
+    #frame = cv2.resize(frame, (w, h), interpolation = cv2.INTER_AREA)
 
     # merge forground and background
     background = cv2.bitwise_and(frame, frame, mask = mask)
